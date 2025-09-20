@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+<h2>Danh sách sản phẩm</h2>
+<a href="/products/new" class="btn btn-primary mb-3">Thêm sản phẩm</a>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Tên sản phẩm</th>
+      <th>Địa chỉ</th>
+      <th>Số điện thoại</th>
+      <th>Nhà cung cấp</th>
+      <th>Hành động</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.forEach(product => { %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.address %></td>
+        <td><%= product.phone %></td>
+        <td><%= product.supplier ? product.supplier.name : "N/A" %></td>
+        <td>
+          <a href="/products/<%= product._id %>/edit" class="btn btn-warning btn-sm">Sửa</a>
+          <a href="/products/<%= product._id %>/delete" class="btn btn-danger btn-sm">Xóa</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<%- include('../partials/footer') %>

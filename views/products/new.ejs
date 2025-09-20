@@ -1,0 +1,33 @@
+<!-- views/products/new.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thêm sản phẩm</title>
+</head>
+<body>
+  <h1>Thêm sản phẩm mới</h1>
+
+  <form action="/products/new" method="POST">
+    <label for="name">Tên sản phẩm:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label for="address">Địa chỉ:</label><br>
+    <input type="text" name="address" required><br><br>
+
+    <label for="phone">Số điện thoại:</label><br>
+    <input type="text" name="phone" required><br><br>
+
+    <label for="supplierId">Nhà cung cấp:</label><br>
+    <select name="supplierId" required>
+      <% suppliers.forEach(supplier => { %>
+        <option value="<%= supplier._id %>"><%= supplier.name %></option>
+      <% }) %>
+    </select><br><br>
+
+    <button type="submit">Lưu</button>
+  </form>
+
+  <br>
+  <a href="/products">Quay lại danh sách</a>
+</body>
+</html>
