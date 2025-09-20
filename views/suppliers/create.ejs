@@ -1,89 +1,27 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thêm nhà cung cấp</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 20px;
-    }
+<%- include('../partials/header') %>
 
-    h1 {
-      color: #333;
-      text-align: center;
-    }
+<div class="container mt-4">
+  <h2>Thêm nhà cung cấp</h2>
 
-    form {
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+  <form method="POST" action="/suppliers/create" class="mt-3">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên nhà cung cấp</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên nhà cung cấp" required>
+    </div>
 
-    label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+    <div class="mb-3">
+      <label for="address" class="form-label">Địa chỉ</label>
+      <input type="text" class="form-control" id="address" name="address" placeholder="Nhập địa chỉ" required>
+    </div>
 
-    input {
-      width: 100%;
-      padding: 8px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
+    <div class="mb-3">
+      <label for="phone" class="form-label">Điện thoại</label>
+      <input type="text" class="form-control" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
+    </div>
 
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    button:hover {
-      background-color: #218838;
-    }
-
-    .back-link {
-      display: block;
-      text-align: center;
-      margin-top: 15px;
-      color: #007bff;
-      text-decoration: none;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <h1>Thêm nhà cung cấp</h1>
-
-  <form method="POST" action="/suppliers/new">
-    <label for="name">Tên:</label>
-    <input type="text" id="name" name="name" placeholder="Nhập tên nhà cung cấp" required>
-
-    <label for="address">Địa chỉ:</label>
-    <input type="text" id="address" name="address" placeholder="Nhập địa chỉ" required>
-
-    <label for="phone">Điện thoại:</label>
-    <input type="text" id="phone" name="phone" placeholder="Nhập số điện thoại" required>
-
-    <button type="submit">Thêm nhà cung cấp</button>
+    <button type="submit" class="btn btn-primary">Thêm nhà cung cấp</button>
+    <a href="/suppliers" class="btn btn-secondary ms-2">Quay lại danh sách</a>
   </form>
+</div>
 
-  <a class="back-link" href="/suppliers">« Quay lại danh sách</a>
-</body>
-</html>
+<%- include('../partials/footer') %>

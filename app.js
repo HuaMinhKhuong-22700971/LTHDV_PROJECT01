@@ -57,6 +57,7 @@ app.get('/destroy-session', (req, res) => {
 //app.use('/', require('./routes/authRoutes'));           // đăng ký, login, logout
 app.use('/suppliers', require('./routes/supplierRoutes')); // CRUD supplier
 app.use('/products', require('./routes/productRoutes'));
+
   // CRUD product + tìm kiếm
 
 // ===== START SERVER =====

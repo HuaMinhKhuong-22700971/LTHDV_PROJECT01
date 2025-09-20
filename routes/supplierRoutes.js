@@ -6,10 +6,10 @@ const c = require('../controllers/supplierController');
 router.get('/', c.index);
 
 // form thêm mới → đổi sang /new
-router.get('/new', c.createForm);
+router.get('/create', c.createForm);
 
 // xử lý thêm mới
-router.post('/new', c.create);
+router.post('/create', c.create);
 
 // form chỉnh sửa
 router.get('/:id/edit', c.editForm);

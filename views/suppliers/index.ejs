@@ -1,30 +1,45 @@
 <%- include('../partials/header') %>
 
-<h2>Danh sách Suppliers</h2>
-<a href="/suppliers/new" class="btn btn-primary mb-3">Thêm Supplier</a>
+<div class="container my-5">
+  <h2 class="mb-4">Danh sách nhà cung cấp</h2>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Tên</th>
-      <th>Địa chỉ</th>
-      <th>SĐT</th>
-      <th>Hành động</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% suppliers.forEach(supplier => { %>
-      <tr>
-        <td><%= supplier.name %></td>
-        <td><%= supplier.address %></td>
-        <td><%= supplier.phone %></td>
-        <td>
-          <a href="/suppliers/<%= supplier._id %>/edit" class="btn btn-warning btn-sm">Sửa</a>
-          <a href="/suppliers/<%= supplier._id %>/delete" class="btn btn-danger btn-sm">Xóa</a>
-        </td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
+  <div class="mb-3">
+    <a href="/suppliers/create" class="btn btn-success">
+      <i class="bi bi-plus-circle"></i> Thêm nhà cung cấp
+    </a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered align-middle">
+      <thead class="table-dark text-center">
+        <tr>
+          <th scope="col">Tên nhà cung cấp</th>
+          <th scope="col">Địa chỉ</th>
+          <th scope="col">Điện thoại</th>
+          <th scope="col">Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% suppliers.forEach(supplier => { %>
+          <tr>
+            <td><%= supplier.name %></td>
+            <td><%= supplier.address %></td>
+            <td><%= supplier.phone %></td>
+            <td class="text-center">
+              <a href="/suppliers/<%= supplier._id %>/edit" class="btn btn-warning btn-sm me-2">
+                <i class="bi bi-pencil-square"></i> Sửa
+              </a>
+              <form action="/suppliers/<%= supplier._id %>/delete" method="POST" style="display:inline;">
+                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc muốn xóa nhà cung cấp này?')">
+                  <i class="bi bi-trash"></i> Xóa
+                </button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <%- include('../partials/footer') %>

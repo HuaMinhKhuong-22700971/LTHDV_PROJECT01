@@ -4,7 +4,10 @@ const Supplier = require('../models/Supplier');
 exports.index = async (req, res) => {
   try {
     const suppliers = await Supplier.find();
-    res.render('suppliers/index', { suppliers });
+    res.render('suppliers/index', { 
+      suppliers,
+      query: req.query // truyền query để form tìm kiếm giữ giá trị
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send("Lỗi khi lấy danh sách nhà cung cấp");
@@ -12,9 +15,17 @@ exports.index = async (req, res) => {
 };
 
 // Form thêm mới
-exports.createForm = (req, res) => {
-  res.render('suppliers/create');
+
+exports.createForm = async (req, res) => {
+  try {
+    const suppliers = await Supplier.find(); // lấy danh sách nhà cung cấp (nếu muốn hiển thị table trong create)
+    res.render('suppliers/create', { suppliers });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Lỗi khi hiển thị form thêm nhà cung cấp");
+  }
 };
+
 
 // Xử lý thêm mới
 exports.create = async (req, res) => {
