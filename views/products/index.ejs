@@ -7,8 +7,8 @@
   <thead>
     <tr>
       <th>Tên sản phẩm</th>
-      <th>Địa chỉ</th>
-      <th>Số điện thoại</th>
+      <th>Giá</th>
+      <th>Số lượng</th>
       <th>Nhà cung cấp</th>
       <th>Hành động</th>
     </tr>
@@ -17,12 +17,14 @@
     <% products.forEach(product => { %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.address %></td>
-        <td><%= product.phone %></td>
-        <td><%= product.supplier ? product.supplier.name : "N/A" %></td>
+        <td><%= product.price %></td>
+        <td><%= product.quantity %></td>
+        <td><%= product.supplierId ? product.supplierId.name : "N/A" %></td>
         <td>
           <a href="/products/<%= product._id %>/edit" class="btn btn-warning btn-sm">Sửa</a>
-          <a href="/products/<%= product._id %>/delete" class="btn btn-danger btn-sm">Xóa</a>
+          <form action="/products/<%= product._id %>/delete" method="POST" style="display:inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Xóa</button>
+          </form>          
         </td>
       </tr>
     <% }) %>
